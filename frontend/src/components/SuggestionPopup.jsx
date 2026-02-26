@@ -9,7 +9,11 @@ export default function SuggestionPopup({ popup, onSelect, onClose }) {
       if (ref.current && !ref.current.contains(e.target)) onClose()
     }
     document.addEventListener('mousedown', handler)
-    return () => document.removeEventListener('mousedown', handler)
+    document.addEventListener('touchstart', handler)
+    return () => {
+      document.removeEventListener('mousedown', handler)
+      document.removeEventListener('touchstart', handler)
+    }
   }, [onClose])
 
   if (popup.type === 'warning') {

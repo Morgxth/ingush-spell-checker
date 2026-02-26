@@ -10,6 +10,26 @@
   overflow: hidden;
 }
 
+/* Bottom sheet on mobile */
+@media (max-width: 640px) {
+  .popup {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+    border-bottom: none;
+    box-shadow: 0 -4px 32px rgba(0,0,0,0.6);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .item {
+    padding: 0.7rem 1.2rem;
+  }
+}
+
 .header {
   padding: 0.6rem 0.9rem;
   border-bottom: 1px solid #2d3148;

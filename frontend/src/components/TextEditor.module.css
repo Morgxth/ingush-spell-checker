@@ -66,3 +66,9 @@
 }
 
 .textarea::placeholder { color: transparent; }
+
+@media (max-width: 640px) {
+  /* Prevent iOS auto-zoom on focus */
+  .highlight,
+  .textarea { font-size: 16px; }
+}

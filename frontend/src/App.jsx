@@ -7,6 +7,7 @@ import Dictionary from './components/Dictionary'
 import About from './components/About'
 import Education from './components/Education'
 import Contact from './components/Contact'
+import ScrollToTop from './components/ScrollToTop'
 import s from './App.module.css'
 
 const DEBOUNCE_MS = 800
@@ -103,6 +104,8 @@ export default function App() {
       {tab === 'about'       && <About />}
       {tab === 'education'   && <Education />}
       {tab === 'contact'     && <Contact />}
+
+      <ScrollToTop />
     </div>
   )
 }

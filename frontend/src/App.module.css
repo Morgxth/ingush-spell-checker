@@ -47,7 +47,21 @@
   margin-bottom: 1.25rem;
   border-bottom: 1px solid #1e293b;
   padding-bottom: 0;
+
+  /* Sticky nav */
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #0f1117;
+  padding-top: 0.5rem;
+  margin-top: -0.5rem;
+
+  /* Mobile: scroll horizontally if tabs don't fit */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.tabs::-webkit-scrollbar { display: none; }
 
 .tab {
   padding: 0.5rem 1.25rem;
@@ -59,6 +73,8 @@
   cursor: pointer;
   transition: color 0.15s, border-color 0.15s;
   margin-bottom: -1px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .tab:hover {
