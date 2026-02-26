@@ -2,6 +2,7 @@ package com.example.someapp.config;
 
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
+import io.github.bucket4j.Refill;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.FilterConfig;
@@ -57,10 +58,7 @@ public class RateLimitFilter implements Filter {
 
     private Bucket newBucket() {
         return Bucket.builder()
-                .addLimit(Bandwidth.builder()
-                        .capacity(CAPACITY)
-                        .refillGreedy(CAPACITY, REFILL_PERIOD)
-                        .build())
+                .addLimit(Bandwidth.classic(CAPACITY, Refill.greedy(CAPACITY, REFILL_PERIOD)))
                 .build();
     }
 
