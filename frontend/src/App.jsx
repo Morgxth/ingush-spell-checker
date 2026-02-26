@@ -4,12 +4,15 @@ import StatsPanel from './components/StatsPanel'
 import TextEditor from './components/TextEditor'
 import ContextWarnings from './components/ContextWarnings'
 import Dictionary from './components/Dictionary'
+import About from './components/About'
+import Education from './components/Education'
+import Contact from './components/Contact'
 import s from './App.module.css'
 
 const DEBOUNCE_MS = 800
 
 export default function App() {
-  const [tab, setTab] = useState('checker') // 'checker' | 'dictionary'
+  const [tab, setTab] = useState('checker') // 'checker' | 'dictionary' | 'about' | 'education' | 'contact'
 
   const [corrections, setCorrections]         = useState([])
   const [contextWarnings, setContextWarnings] = useState([])
@@ -55,18 +58,21 @@ export default function App() {
       <StatsPanel />
 
       <nav className={s.tabs}>
-        <button
-          className={`${s.tab} ${tab === 'checker' ? s.tabActive : ''}`}
-          onClick={() => setTab('checker')}
-        >
-          Проверка
-        </button>
-        <button
-          className={`${s.tab} ${tab === 'dictionary' ? s.tabActive : ''}`}
-          onClick={() => setTab('dictionary')}
-        >
-          Словарь
-        </button>
+        {[
+          { id: 'checker',   label: 'Проверка'   },
+          { id: 'dictionary',label: 'Словарь'    },
+          { id: 'about',     label: 'О проекте'  },
+          { id: 'education', label: 'Образование' },
+          { id: 'contact',   label: 'Контакты'   },
+        ].map(({ id, label }) => (
+          <button
+            key={id}
+            className={`${s.tab} ${tab === id ? s.tabActive : ''}`}
+            onClick={() => setTab(id)}
+          >
+            {label}
+          </button>
+        ))}
       </nav>
 
       {tab === 'checker' && (
@@ -93,7 +99,10 @@ export default function App() {
         </>
       )}
 
-      {tab === 'dictionary' && <Dictionary />}
+      {tab === 'dictionary'  && <Dictionary />}
+      {tab === 'about'       && <About />}
+      {tab === 'education'   && <Education />}
+      {tab === 'contact'     && <Contact />}
     </div>
   )
 }
